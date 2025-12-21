@@ -1,0 +1,34 @@
+{
+    "comments": {
+        "lineComment": {
+            "comment": "#",
+        },
+        "blockComment": [ "##", "##" ]
+    },
+    "indentationRules": {
+        "increaseIndentPattern": "\\b(func|do|if|for|while|capture|readonly|with|wrap|include|when|tablerow)\\b",
+        "decreaseIndentPattern": "\\b(end|else)\\b"
+    },
+    // symbols used as brackets
+    "brackets": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"]
+    ],
+    // symbols that are auto closed when typing
+    "autoClosingPairs": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        ["\"", "\""],
+        ["'", "'"]
+    ],
+    // symbols that can be used to surround a selection
+    "surroundingPairs": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        ["\"", "\""],
+        ["'", "'"]
+    ]
+}
