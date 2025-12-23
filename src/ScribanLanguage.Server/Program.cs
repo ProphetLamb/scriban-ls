@@ -9,33 +9,53 @@ RootCommand cli = new("Scriban Language Server")
     },
     Subcommands =
     {
-        new("stdio", "LSP JSON-RPC 2.0 over stdin and stdout stream")
+        new("run", "Evaluates or renders the Scriban script or template using the specified model")
         {
-            Action = new StdioAction()
-        },
-        new("pipe", "LSP JSON-RPC 2.0 over named pipe stream")
-        {
+            Action = new RunAction(),
             Arguments =
             {
-                NamedPipeAction.PipeNameArgument
+                RunAction.Text,
             },
-            Action = new NamedPipeAction()
-        },
-        new("tcp", "LSP JSON-RPC 2.0 over TCP steam")
-        {
-            Arguments =
+            Options =
             {
-                TcpStreamAction.EndpointArgument
-            },
-            Action = new TcpStreamAction(),
+                RunAction.Model,
+                RunAction.LexerLang,
+                RunAction.LexerMode
+            }
         },
-        new("udp", "LSP JSON-RPC 2.0 over UDP socket")
+        new("lsp", "Runs language server, allowing clients to connect via IPC")
         {
-            Arguments =
+            Subcommands =
             {
-                UdpSocketAction.EndpointArgument
-            },
-            Action = new UdpSocketAction(),
+                new("stdio", "LSP JSON-RPC 2.0 over stdin and stdout stream")
+                {
+                    Action = new StdioAction()
+                },
+                new("pipe", "LSP JSON-RPC 2.0 over named pipe stream")
+                {
+                    Arguments =
+                    {
+                        NamedPipeAction.PipeNameArgument
+                    },
+                    Action = new NamedPipeAction()
+                },
+                new("tcp", "LSP JSON-RPC 2.0 over TCP steam")
+                {
+                    Arguments =
+                    {
+                        TcpStreamAction.EndpointArgument
+                    },
+                    Action = new TcpStreamAction(),
+                },
+                new("udp", "LSP JSON-RPC 2.0 over UDP socket")
+                {
+                    Arguments =
+                    {
+                        UdpSocketAction.EndpointArgument
+                    },
+                    Action = new UdpSocketAction(),
+                },
+            }
         },
     },
 };

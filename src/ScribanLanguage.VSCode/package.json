@@ -10,7 +10,9 @@
   "categories": [
     "Programming Languages"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:workbench.action.tasks.runTask"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "configurationDefaults": {
@@ -22,6 +24,29 @@
       {
         "command": "scriban-language.trace",
         "title": "Scriban enable Trace"
+      }
+    ],
+    "taskDefinitions": [
+      {
+        "type": "scriban",
+        "required": [
+          "source",
+          "languageId"
+        ],
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "File path to the Scriban script or template to interpret"
+          },
+          "model": {
+            "type": "string",
+            "description": "File path to the JSON model accessed when evaluation the script or template"
+          },
+          "languageId": {
+            "type": "string",
+            "description": "Name of the language of the script or template file"
+          }
+        }
       }
     ],
     "languages": [
